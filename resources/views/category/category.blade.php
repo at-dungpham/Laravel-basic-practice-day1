@@ -2,6 +2,11 @@
 
 @section('content')
 	<a href="{{ route('product') }}">Product</a>
+	@if(session()->has('success'))
+	    <div class="alert alert-success">
+	        {{ session()->get('success') }}
+	    </div>
+	@endif	
 	<table>
 		<tr>
 			<td>id</td>
@@ -22,5 +27,5 @@
 			</tr>		
 		@endforeach
 	</table>
-
+	{{ $index->links() }}
 @endsection

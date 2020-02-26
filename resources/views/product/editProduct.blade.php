@@ -3,6 +3,15 @@
 @section('content')
 	<a href="{{ route('product') }}">Product</a><br>
 	<a href="{{ route('category') }}">Category</a>
+	@if ($errors->any())
+	    <div>
+	        <ul>
+	            @foreach ($errors->all() as $error)
+	                <li>{{ $error }}</li>
+	            @endforeach
+	        </ul>
+	    </div>
+	@endif	
 	<table>
 		<thead>
 			<tr>

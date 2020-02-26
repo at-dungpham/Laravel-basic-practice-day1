@@ -2,6 +2,15 @@
 
 @section('content')
 	<a href="{{ route('product') }}">Product</a>
+	@if ($errors->any())
+	    <div>
+	        <ul>
+	            @foreach ($errors->all() as $error)
+	                <li>{{ $error }}</li>
+	            @endforeach
+	        </ul>
+	    </div>
+	@endif
 	<form action="{{ route('storeProduct') }}" method="POST">
 		@csrf
 		<label for="">name</label>

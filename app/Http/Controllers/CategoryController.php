@@ -16,7 +16,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $index = Category::all();
+        $index = Category::paginate(10);
         return view('category.category', compact('index'));
     }
 
@@ -94,6 +94,7 @@ class CategoryController extends Controller
         $id->products()->delete();
         //delete id from category
         Category::destroy($id->id);
-        return redirect()->route('category');
+        return redirect()->route('category')
+                        ->with('success','success delete Category');
     }
 }
