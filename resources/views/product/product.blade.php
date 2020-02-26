@@ -3,6 +3,11 @@
 @section('content')
 	<a href="{{ route('category') }}">Category</a><br>	
 	<a href="{{ route('createProduct') }}">Create product</a>
+	@if(session()->has('success'))
+	    <div class="alert alert-success">
+	        {{ session()->get('success') }}
+	    </div>
+	@endif
 	<table>
 		<tr>
 			<td>id</td>
@@ -10,7 +15,7 @@
 			<td>quantity</td>
 			<td>description</td>
 			<td>category_id</td>
-		</tr>	
+		</tr>
 	@foreach ($index as $value)
 		<tr>
 			<td> <a href="{{ route('showProduct', ['id' => $value->id]) }}">{{ $value->id }}</a> </td>
@@ -29,4 +34,5 @@
 		</tr>
 	@endforeach
 	</table>
+	{{ $index->links() }}
 @endsection
